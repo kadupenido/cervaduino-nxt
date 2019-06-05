@@ -17,12 +17,21 @@ export const TankSchema = new mongoose.Schema({
         type: Number,
         required: false,
     },
-    capacity: {
-        type: Number,
-        required: true,
-    },
     offsetTemp: {
         type: Number,
         required: true,
     },
+}, {
+        toJSON: {
+            virtuals: true
+        }
+    });
+
+TankSchema.virtual('capacity').get(function () {
+    return calcCapacity(this.diameter, this.height);
 });
+
+function calcCapacity(diameter, height) {
+    const raio = diameter / 2;
+    return Math.round(Math.PI * raio * raio * (height / 1000) * 100) / 100;
+}
