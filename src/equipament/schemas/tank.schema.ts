@@ -23,11 +23,11 @@ export const TankSchema = new mongoose.Schema({
     },
 }, {
         toJSON: {
-            virtuals: true
-        }
+            virtuals: true,
+        },
     });
 
-TankSchema.virtual('capacity').get(function () {
+TankSchema.virtual('capacity').get(function() {
     return calcCapacity(this.diameter, this.height);
 });
 

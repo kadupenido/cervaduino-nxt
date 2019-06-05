@@ -5,5 +5,5 @@ export class EquipamentDto {
     hlt: TankDto;
     mlt: TankDto;
     bk: TankDto;
-    fermenter: FermenterDto
+    fermenter: FermenterDto;
 }

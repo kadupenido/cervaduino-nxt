@@ -13,7 +13,7 @@ export class EquipamentService {
      * Busca o equipamento cadastrado no sistema
      */
     async find(): Promise<IEquipament> {
-        return await this.equipamentModel.findOne().exec();;
+        return await this.equipamentModel.findOne().exec();
     }
 
     /**

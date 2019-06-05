@@ -1,14 +1,4 @@
-import {
-    BadRequestException,
-    Body,
-    Controller,
-    Get,
-    HttpStatus,
-    InternalServerErrorException,
-    Post,
-    Res,
-} from '@nestjs/common';
-import { Response } from 'express';
+import { BadRequestException, Body, Controller, Get, InternalServerErrorException, Post } from '@nestjs/common';
 
 import { EquipamentDto } from './dto/equipament.dto';
 import { EquipamentService } from './equipament.service';
@@ -23,9 +13,9 @@ export class EquipamentController {
      * Busca o equipamento cadastrado
      */
     @Get()
-    async find(@Res() res: Response): Promise<any> {
+    async find(): Promise<any> {
         try {
-            res.status(HttpStatus.OK).send(await this.equipamentService.find());
+            return await this.equipamentService.find();
         } catch (error) {
             throw new InternalServerErrorException(error.message);
         }
